@@ -1,3 +1,5 @@
+# IMPORTANT: the code requires a yaml file containing the user's OpenAI API key, which is placed directly outside the git repo, "creds.yaml"
+
 # steps to reproduce (all commands are executed from the current folder)
 * (1) initial files: "prompt.py", "prompt.txt", and "regression_dataset.csv"
 * (2) run from CLI:
