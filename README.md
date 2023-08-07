@@ -24,15 +24,15 @@ The code requires a yaml file containing the user's OpenAI API key, named "creds
 The dashboard allows the user to select the type of analysis (ML Problem), file type, included python packages, and to provide a description of the data.
 
 Supported Analyses:
-*Regression Modeling
-*Classification Modeling
-*Statistical Description Analysis
+* Regression Modeling
+* Classification Modeling
+* Statistical Description Analysis
 
 Supported File Types:
-*CSV
-*Matlab
-*Excel
-*XML
+* CSV
+* Matlab
+* Excel
+* XML
 
 Python packages are installed with pip from the Python Package Index (PyPI).
 
