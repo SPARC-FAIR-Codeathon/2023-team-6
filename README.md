@@ -46,15 +46,15 @@ A short description of the data should be provided in the Data Description text 
 3. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
 4. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
     ```
-    docker build -t SPARC_analysis_image .
+    docker build -t sparc_analysis_image .
     ```
 5. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
     ```
-    docker run -v <absolute path>:/app SPARC_analysis_image:latest
+    docker run -v <absolute path>:/app sparc_analysis_image:latest
     ```
 6. **Cleanup: Remove the Docker container and image**, using the CLI, by running the following command:
     ```
-    docker stop SPARC_analysis_image:latest && docker rm SPARC_analysis_image:latest && docker rmi -f SPARC_analysis_image:latest
+    docker stop SPARC_analysis_image:latest && docker rm sparc_analysis_image:latest && docker rmi -f sparc_analysis_image:latest
     ```
 
 ## [SPARC FAIR Codeathon 2023](https://sparc.science/news-and-events/events/2023sparc-codeathon) — Team 6
