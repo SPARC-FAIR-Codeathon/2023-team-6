@@ -23,21 +23,21 @@ The code requires a yaml file containing the user's OpenAI API key, named "creds
 ## Instructions for Use
 [TODO] Include more details about using the dashboard.
 
-* (1) **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard
-* (2) **Download data**, using the dashboard, select and download data to the local folder (a sub-folder in this location, "data", will contain the data)
-* (3) **Generate the analysis files**, using the dashboard, select the type of analysis and create the custom Python script and Dockerfile, downloaded to the local folder
-* (4) **Build the Docker image**, in the CLI, navigate to the local folder, run the command to build the image
-```
-docker build -t SPARC_analysis_image .
-```
-* (5) **Run the analysis**, in the CLI, in the local folder and obtain the \<absolute path\> by running `pwd` on Linux/MacOS or `cd` on Windows; then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results"
-```
-docker run -v <absolute path>:/app SPARC_analysis_image:latest
-```
-* (6) **Cleanup: Remove the Docker container and image**, in the CLI, run the following command. 
-```
-docker stop SPARC_analysis_image:latest && docker rm SPARC_analysis_image:latest && docker rmi -f SPARC_analysis_image:latest
-```
+1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard.
+2. **Download data**, using the dashboard, select and download data to the local folder (a sub-folder in this location, "data", will contain the data).
+3. **Generate the analysis files**, using the dashboard, select the type of analysis and create the custom Python script and Dockerfile, downloaded to the local folder.
+4. **Build the Docker image**, in the command line interface (CLI), navigate to the local folder, run the command to build the image:
+    ```
+    docker build -t SPARC_analysis_image .
+    ```
+5. **Run the analysis**, in the CLI, in the local folder, and obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results":
+    ```
+    docker run -v <absolute path>:/app SPARC_analysis_image:latest
+    ```
+6. **Cleanup: Remove the Docker container and image**, in the CLI, run the following command:
+    ```
+    docker stop SPARC_analysis_image:latest && docker rm SPARC_analysis_image:latest && docker rmi -f SPARC_analysis_image:latest
+    ```
 
 ## [SPARC FAIR Codeathon 2023](https://sparc.science/news-and-events/events/2023sparc-codeathon) — Team 6
 **Team members:**
