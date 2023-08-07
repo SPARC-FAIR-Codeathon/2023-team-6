@@ -11,17 +11,26 @@ This project consists of a dashboard implemented with React (frontend) and Flask
 [TODO]How is the dashboard installed?
 
 ## Instructions for Use
-### Dashboard
 
-
-### Docker
-
-
-In the CLI, navigate to the location of the [file] and obtain the \<absolute path\> by running `pwd` on Linux/MacOS or `cd` on Windows.
+* (1) create a local folder for the analysis that will contain the data and files downloaded from the Dashboard
+* (2) using the dashboard, select and download data to the local folder (a sub-folder in this location, "data", will contain the data)
+* (3) using the dashboard, select the type of analysis and create the custom Python script and Dockerfile
+* (4) in the CLI, navigate to the local folder and obtain the \<absolute path\> by running `pwd` on Linux/MacOS or `cd` on Windows; then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results"
 ```
 docker run -v <absolute path>:/app ml_analysis_image_api:latest
 ```
-
+* (5) in the CLI, to stop the Docker container, first, run the following to determine the container name
+```
+docker ps -a
+```
+* (6) next, run the following to stop the container
+```
+docker rm <container name>
+```
+* (7) in the CLI, to delete the Docker image run
+```
+docker rmi ml_analysis_image_api:latest
+```
 
 ## [SPARC FAIR Codeathon 2023](https://sparc.science/news-and-events/events/2023sparc-codeathon) — Team 6
 **Team members:**
