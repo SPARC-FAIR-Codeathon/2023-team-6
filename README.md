@@ -48,11 +48,11 @@ A short description of the data should be provided in the Data Description text 
     ```
     docker build -t SPARC_analysis_image .
     ```
-5. **Run the analysis**, in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results":
+5. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
     ```
     docker run -v <absolute path>:/app SPARC_analysis_image:latest
     ```
-6. **Cleanup: Remove the Docker container and image**, in the CLI, by running the following command:
+6. **Cleanup: Remove the Docker container and image**, using the CLI, by running the following command:
     ```
     docker stop SPARC_analysis_image:latest && docker rm SPARC_analysis_image:latest && docker rmi -f SPARC_analysis_image:latest
     ```
