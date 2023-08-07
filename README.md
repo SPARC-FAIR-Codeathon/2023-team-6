@@ -2,7 +2,7 @@
 A tool for **Fast** and **Small saveable workflows** for SPARC data analysis
 
 ## What is "AI SPARC Flows"?
-This project consists of a dashboard implemented with React (frontend) and Flask (backend) that allows users to select relevant datasets from the SPARC data repository along with desired analyses to be performed on the data. The data is retreived via the Pennsieve API and downloaded locally to the user's computer. The requested analyses is used to generate a prompt that is then sent to ***ChatGPT via the OpenAI API*** (a large language model), which in turn generates a Dockerfile and Python script that is returned to the user. The user runs the Dockerfile to create a Docker image with the appropriate analysis environment and the Python script is used to complete the data analyses.
+This project consists of a dashboard implemented with React (frontend) and Flask (backend) that allows users to input desired analysis to be performed on datasets from the SPARC data repository. The requested analysis is used to generate a prompt that is then sent to ***ChatGPT via the OpenAI API*** (a Large Language Model), which in turn generates a Dockerfile and Python script that is returned to the user. The user runs the Dockerfile to create a Docker image with the appropriate analysis environment and the Python script is used to complete the data analysis.
 
 ## Why use this tool? 
 This tool reduced two pain points in the analysis of SPARC data.
@@ -20,21 +20,39 @@ This tool reduced two pain points in the analysis of SPARC data.
 
 The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
 
-## Instructions for Use
-[TODO] Include more details about using the dashboard.
+## Dashboard Overview
+The dashboard allows the user to select the type of analysis (ML Problem), file type, included python packages, and to provide a description of the data.
 
+Supported Analyses:
+*Regression Modeling
+*Classification Modeling
+*Statistical Description Analysis
+
+Supported File Types:
+*CSV
+*Matlab
+*Excel
+*XML
+
+Python packages are installed with pip from the Python Package Index (PyPI).
+
+A short description of the data should be provided in the Data Description text box. A short example of the dataset can also be, optionally, provided.
+
+![Dashboard Screenshot](dashboard_screenshot.png)
+
+## Instructions for Use
 1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard.
-2. **Download data**, using the dashboard, select and download data to the local folder (a sub-folder in this location, "data", will contain the data).
-3. **Generate the analysis files**, using the dashboard, select the type of analysis and create the custom Python script and Dockerfile, downloaded to the local folder.
-4. **Build the Docker image**, in the command line interface (CLI), navigate to the local folder, run the command to build the image:
+2. **Download data**, using the SPARC website, to the local sub-folder that will contain the data in this location, named "data".
+3. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
+4. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
     ```
     docker build -t SPARC_analysis_image .
     ```
-5. **Run the analysis**, in the CLI, in the local folder, and obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results":
+5. **Run the analysis**, in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder, "results":
     ```
     docker run -v <absolute path>:/app SPARC_analysis_image:latest
     ```
-6. **Cleanup: Remove the Docker container and image**, in the CLI, run the following command:
+6. **Cleanup: Remove the Docker container and image**, in the CLI, by running the following command:
     ```
     docker stop SPARC_analysis_image:latest && docker rm SPARC_analysis_image:latest && docker rmi -f SPARC_analysis_image:latest
     ```
