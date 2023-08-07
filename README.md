@@ -46,7 +46,7 @@ The code requires a yaml file containing the user's OpenAI API key, named "creds
 * Mason Mings
 
 ## License
-AI Workflows for SPARC is distributed under the [MIT License](https://opensource.org/license/mit/).
+AI SPARC Flows is distributed under the [MIT License](https://opensource.org/license/mit/).
 
 2023
 
