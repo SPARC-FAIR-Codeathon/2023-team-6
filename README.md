@@ -1,4 +1,4 @@
-<p style="text-align:center"><img width="450" alt="Directory Structure 2" src="dashboard/src/logo.png"></p>
+<p style="text-align:center"><img width="500" alt="Directory Structure 2" src="dashboard/src/logo.png"></p>
 
 A tool for **Fast** and **Small savable workflows** for SPARC data analysis
 
