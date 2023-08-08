@@ -1,10 +1,11 @@
-# AI SPARC Flows
+![Logo](logo.png)
+
 A tool for **Fast** and **Small saveable workflows** for SPARC data analysis
 
-## What is "AI SPARC Flows"?
+# What is "AI SPARC flows"?
 This project consists of a dashboard implemented with React (frontend) and Flask (backend) that allows users to input desired analysis to be performed on datasets from the SPARC data repository. The requested analysis is used to generate a prompt that is then sent to ***ChatGPT via the OpenAI API*** (a Large Language Model), which in turn generates a Dockerfile and Python script that is returned to the user. The user runs the Dockerfile to create a Docker image with the appropriate analysis environment and the Python script is used to complete the data analysis.
 
-## Why use this tool? 
+# Why use this tool? 
 This tool reduced two pain points in the analysis of SPARC data.
 
 ***Fast preliminary analysis!*** Using AI generated workflows, get an initial answer to a research question immediately compared to days or weeks. The insights generated in the initial result can be used to drive deeper follow-up analyses.
@@ -15,12 +16,28 @@ This tool reduced two pain points in the analysis of SPARC data.
 * [OpenAI](https://openai.com/) API Key for ChapGPT
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-## Installation
-[TODO] How is the dashboard installed?
+# Installation
+In order to properly have the dashboard generate files, you will need to first clone this repo to a local directory.
+
+To run the dashboard locally, first navigate to the dashboard subdirectory and run the command
+```npm install```
+Once installed, you should be able to run the command
+```npm start```
+and your browser should automatically open a window displaying the dashboard on localhost 3000.
+
+In a seperate terminal, you will need to run the flask server file
+```server.py```. To do so, you will navigate to the backend subdirectory and run the command
+```python server.py```. If you do not have flask installed, you can run the command
+```pip install flask``` or check out flask's installation guide [here] (https://flask.palletsprojects.com/en/2.3.x/installation/).
+Some other packages that our server requires, which you might need to install, include openai, tiktoken, and PyYAML. If you do not have these installed, run the commands
+```pip install openai```
+```pip install tiktoken```
+```pip install PyYAML```
+
 
 The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
 
-## Dashboard Overview
+# Dashboard Overview
 The dashboard allows the user to select the type of analysis (ML Problem), file type, included python packages, and to provide a description of the data.
 
 Supported Analyses:
@@ -40,38 +57,38 @@ A short description of the data should be provided in the Data Description text 
 
 ![Dashboard Screenshot](dashboard_screenshot.png)
 
-## Instructions for Use
-1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard. Add two subdirectories named "results" (where the analysis results will output results to a results.txt file) and another named "data" into which you will place the data files you will run your analysis on
-2. **Download data**, using the SPARC website, to the local sub-folder that will contain the data in this location, named "data". Your local directory should look something like this:
-3. 
-   <img width="217" alt="Screen Shot 2023-08-07 at 7 20 39 PM" src="https://github.com/SPARC-FAIR-Codeathon/2023-team-6/assets/36039792/6d231ba7-5917-4db2-b5d9-b91c9258e217">
+# Instructions for Use
+1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard. Add two subdirectories named "results" (where the analysis results will output results to a results.txt file) and another named "data" into which you will place the data files you will run your analysis on.
 
-4. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
-5. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
+2. **Download data**, using the SPARC website, to the local sub-folder that will contain the data in this location, named "data". Your local directory should look something like this:
+<p style="text-align:center"><img width="217" alt="Directory Structure 1" src="directory_structure_1.png"></p>
+
+3. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
+
+4. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
     ```
     docker build -t sparc_analysis_image .
     ```
-6. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
+5. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
     ```
     docker run -v <absolute path>:/app sparc_analysis_image:latest
     ```
-After running your analysis, your directory should look something like this:
-
-<img width="321" alt="Screen Shot 2023-08-07 at 7 20 14 PM" src="https://github.com/SPARC-FAIR-Codeathon/2023-team-6/assets/36039792/8211fc99-5364-4631-961a-4654a31eb916">
+    After running your analysis, your directory should look something like this:
+<p style="text-align:center"><img width="321" alt="Directory Structure 2" src="directory_structure_2.png"></p>
 
 6. **Cleanup: Remove the Docker container and image**, using the CLI, by running the following command:
     ```
     docker stop SPARC_analysis_image:latest && docker rm sparc_analysis_image:latest && docker rmi -f sparc_analysis_image:latest
     ```
 
-## [SPARC FAIR Codeathon 2023](https://sparc.science/news-and-events/events/2023sparc-codeathon) — Team 6
+# [SPARC FAIR Codeathon 2023](https://sparc.science/news-and-events/events/2023sparc-codeathon) — Team 6
 **Team members:**
 * Charles Horn
 * John Bentley
 * Mason Mings
 
-## License
-AI SPARC Flows is distributed under the [MIT License](https://opensource.org/license/mit/).
+# License
+AI SPARC flows is distributed under the [MIT License](https://opensource.org/license/mit/).
 
 2023
 
