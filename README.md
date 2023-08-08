@@ -1,6 +1,6 @@
 ![Logo](logo.png)
 
-A tool for **Fast** and **Small saveable workflows** for SPARC data analysis
+A tool for **Fast** and **Small savable workflows** for SPARC data analysis
 
 # What is "AI SPARC flows"?
 This project consists of a dashboard implemented with React (frontend) and Flask (backend) that allows users to input desired analysis to be performed on datasets from the SPARC data repository. The requested analysis is used to generate a prompt that is then sent to ***ChatGPT via the OpenAI API*** (a Large Language Model), which in turn generates a Dockerfile and Python script that is returned to the user. The user runs the Dockerfile to create a Docker image with the appropriate analysis environment and the Python script is used to complete the data analysis.
@@ -28,7 +28,7 @@ and your browser should automatically open a window displaying the dashboard on 
 In a seperate terminal, you will need to run the flask server file
 ```server.py```. To do so, you will navigate to the backend subdirectory and run the command
 ```python server.py```. If you do not have flask installed, you can run the command
-```pip install flask``` or check out flask's installation guide [here] (https://flask.palletsprojects.com/en/2.3.x/installation/).
+```pip install flask``` or check out flask's installation guide [here](https://flask.palletsprojects.com/en/2.3.x/installation/).
 Some other packages that our server requires, which you might need to install, include openai, tiktoken, and PyYAML. If you do not have these installed, run the commands
 ```pip install openai```
 ```pip install tiktoken```
