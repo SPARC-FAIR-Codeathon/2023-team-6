@@ -19,15 +19,25 @@ This tool reduced two pain points in the analysis of SPARC data.
 # Installation
 In order to properly have the dashboard generate files, you will need to first clone this repo to a local directory.
 
-The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
-
-# Dashboard Overview
 To run the dashboard locally, first navigate to the dashboard subdirectory and run the command
 ```npm install```
 Once installed, you should be able to run the command
 ```npm start```
 and your browser should automatically open a window displaying the dashboard on localhost 3000.
 
+In a seperate terminal, you will need to run the flask server file
+```server.py```. To do so, you will navigate to the backend subdirectory and run the command
+```python server.py```. If you do not have flask installed, you can run the command
+```pip install flask``` or check out flask's installation guide [here] (https://flask.palletsprojects.com/en/2.3.x/installation/).
+Some other packages that our server requires, which you might need to install, include openai, tiktoken, and PyYAML. If you do not have these installed, run the commands
+```pip install openai```
+```pip install tiktoken```
+```pip install PyYAML```
+
+
+The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
+
+# Dashboard Overview
 The dashboard allows the user to select the type of analysis (ML Problem), file type, included python packages, and to provide a description of the data.
 
 Supported Analyses:
