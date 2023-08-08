@@ -1,4 +1,4 @@
-![Logo](logo.png)
+<p style="text-align:center"><img width="321" alt="Directory Structure 2" src="dashboard/src/logo.png"></p>
 
 A tool for **Fast** and **Small savable workflows** for SPARC data analysis
 
