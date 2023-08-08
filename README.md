@@ -17,11 +17,17 @@ This tool reduced two pain points in the analysis of SPARC data.
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 # Installation
-[TODO] How is the dashboard installed?
+In order to properly have the dashboard generate files, you will need to first clone this repo to a local directory.
 
 The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
 
 # Dashboard Overview
+To run the dashboard locally, first navigate to the dashboard subdirectory and run the command
+```npm install```
+Once installed, you should be able to run the command
+```npm start```
+and your browser should automatically open a window displaying the dashboard on localhost 3000.
+
 The dashboard allows the user to select the type of analysis (ML Problem), file type, included python packages, and to provide a description of the data.
 
 Supported Analyses:
