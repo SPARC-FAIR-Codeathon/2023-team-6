@@ -43,18 +43,20 @@ A short description of the data should be provided in the Data Description text 
 ## Instructions for Use
 1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard. Add two subdirectories named "results" (where the analysis results will output results to a results.txt file) and another named "data" into which you will place the data files you will run your analysis on
 2. **Download data**, using the SPARC website, to the local sub-folder that will contain the data in this location, named "data". Your local directory should look something like this:
+3. 
    <img width="217" alt="Screen Shot 2023-08-07 at 7 20 39 PM" src="https://github.com/SPARC-FAIR-Codeathon/2023-team-6/assets/36039792/6d231ba7-5917-4db2-b5d9-b91c9258e217">
 
-3. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
-4. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
+4. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
+5. **Build the Docker image**, in the command line interface (CLI), by navigating to the local folder and running the command to build the image:
     ```
     docker build -t sparc_analysis_image .
     ```
-5. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
+6. **Run the analysis** in the CLI, in the local folder. Obtain the \<absolute path\> by running `pwd` in most Unix shells (Linux/MacOS), `cd` in Windows Command Prompt, or `Get-Location` in Windows PowerShell. Then run the following command to create the docker image and run the analysis, which will produce a sub-folder named "results":
     ```
     docker run -v <absolute path>:/app sparc_analysis_image:latest
     ```
 After running your analysis, your directory should look something like this:
+
 <img width="321" alt="Screen Shot 2023-08-07 at 7 20 14 PM" src="https://github.com/SPARC-FAIR-Codeathon/2023-team-6/assets/36039792/8211fc99-5364-4631-961a-4654a31eb916">
 
 6. **Cleanup: Remove the Docker container and image**, using the CLI, by running the following command:
