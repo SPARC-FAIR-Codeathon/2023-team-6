@@ -78,7 +78,7 @@ export default function ScriptForm() {
     <>
     <form style={{width: "95%"}} onSubmit={generate}>
       <div className="form-group row">
-          <label className="col-sm-4" htmlFor="problem">ML Problem:</label>
+          <label className="col-sm-4" htmlFor="problem">Analysis Type:</label>
           <select className="custom-select col-sm-8" id="problem" name="problem" onChange={handleChange} style={{fontSize: "20px"}}>
             <option defaultValue>Choose...</option>
             <option value="machine learning regression modeling">Regression Modeling</option>

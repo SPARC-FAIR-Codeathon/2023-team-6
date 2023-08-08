@@ -79,4 +79,5 @@ def write_files(response_text):
             file2.write(py_content2)
     if docker_content:
         with open("Dockerfile", "w") as file3:
-            file3.write(docker_content.group(1).strip())
+            # remove the word "dockerfile" since it is difficult to do with a prompt
+            file3.write(docker_content.group(1).strip().replace('dockerfile', ''))
