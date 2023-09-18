@@ -1,33 +1,35 @@
 import os
-import tiktoken
-import yaml
 import os.path as path
 import re
 import uuid
+
+import tiktoken
+import yaml
 
 ###############################
 # get the ChatGPT API key
 ###############################
 
+
 def load_api_key_from_yaml(relative_file_path):
     # grab the key, which is outside the repo
-    two_up = path.abspath(path.join(os.getcwd(),"../../"))
+    two_up = path.abspath(path.join(os.getcwd(), "../../"))
     api_path = two_up + relative_file_path
 
-    with open(api_path, 'r') as file:
+    with open(api_path, "r") as file:
         config = yaml.safe_load(file)
-        return config.get('openai_api_key')
-
+        return config.get("openai_api_key")
 
 
 ###############################
 # engineer the ChatGPT prompt
 ###############################
 
+
 # format the final prompt
 def build_prompt(params):
     packages = ""
-    for package in params['packages']:
+    for package in params["packages"]:
         packages += package + ", "
     packages = packages[0:-2]
 
@@ -57,15 +59,18 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
     num_tokens = len(encoding.encode(string))
     return num_tokens
 
+
 # Define docker section pattern and extract contents
 def get_docker_content(response_text):
-    docker_pattern = r'Dockerfile:(?:\s*```)?\s*(.*?)\s*```'
+    docker_pattern = r"Dockerfile:(?:\s*```)?\s*(.*?)\s*```"
     return re.search(docker_pattern, response_text, re.DOTALL)
+
 
 # Define content section pattern and extract contents
 def get_py_content(response_text):
-    py_pattern = r'script\.py:(?:\s*```)?\s*(.*?)\s*```'
+    py_pattern = r"script\.py:(?:\s*```)?\s*(.*?)\s*```"
     return re.search(py_pattern, response_text, re.DOTALL)
+
 
 def write_files(response_text):
     docker_content = get_docker_content(response_text)
@@ -75,9 +80,9 @@ def write_files(response_text):
     if py_content:
         with open("script.py", "w") as file2:
             # remove the word "python" since it is difficult to do with a prompt
-            py_content2 = py_content.group(1).strip().replace('python', '')
+            py_content2 = py_content.group(1).strip().replace("python", "")
             file2.write(py_content2)
     if docker_content:
         with open("Dockerfile", "w") as file3:
             # remove the word "dockerfile" since it is difficult to do with a prompt
-            file3.write(docker_content.group(1).strip().replace('dockerfile', ''))
+            file3.write(docker_content.group(1).strip().replace("dockerfile", ""))
