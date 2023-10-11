@@ -1,4 +1,4 @@
-<p style="text-align:center"><img width="500" alt="Directory Structure 2" src="dashboard/src/logo.png"></p>
+<div style="text-align: center"><img width="500" alt="AI SPARC Flows Logo" src="dashboard/src/logo.png"></div>
 
 A tool for **Fast** and **Small savable workflows** for SPARC data analysis
 
@@ -19,21 +19,9 @@ This tool reduced two pain points in the analysis of SPARC data.
 # Installation
 In order to properly have the dashboard generate files, you will need to first clone this repo to a local directory.
 
-To run the dashboard locally, first navigate to the dashboard subdirectory and run the command
-```npm install```
-Once installed, you should be able to run the command
-```npm start```
-and your browser should automatically open a window displaying the dashboard on localhost 3000.
+To run the dashboard locally, first navigate to the dashboard subdirectory and run the command `npm install`. Once installed, you should be able to run the command `npm start` and your browser should automatically open a window displaying the dashboard on localhost 3000.
 
-In a seperate terminal, you will need to run the flask server file
-```server.py```. To do so, you will navigate to the backend subdirectory and run the command
-```python server.py```. If you do not have flask installed, you can run the command
-```pip install flask``` or check out flask's installation guide [here](https://flask.palletsprojects.com/en/2.3.x/installation/).
-Some other packages that our server requires, which you might need to install, include openai, tiktoken, and PyYAML. If you do not have these installed, run the commands
-```pip install openai```
-```pip install tiktoken```
-```pip install PyYAML```
-
+In a separate terminal, you will need to run the Flask server file `server.py`. First, navigate to the backend subdirectory and create a virtual environment with the command `python -m venv .venv` and activate it by running the appropriate activation script in `backend/.venv/Scripts` (Windows) or `backend/.venv/bin` (Linux/MacOS). Then, install the required dependencies with the command `pip install -r requirements.txt`. This will install the required dependencies, including Flask, openai, tiktoken, and PyYAML. To start the server, run the command `python server.py`. For issues with Flask, refer to the [Flask documentation](https://flask.palletsprojects.com/en/2.3.x/installation/).
 
 The code requires a yaml file containing the user's OpenAI API key, named "creds.yaml", be placed directly outside the git repo.
 
@@ -61,7 +49,7 @@ A short description of the data should be provided in the Data Description text 
 1. **Create a local folder** for the analysis to contain the data and files downloaded from the Dashboard. Add two subdirectories named "results" (where the analysis results will output results to a results.txt file) and another named "data" into which you will place the data files you will run your analysis on.
 
 2. **Download data**, using the SPARC website, to the local sub-folder that will contain the data in this location, named "data". Your local directory should look something like this:
-<p style="text-align:center"><img width="217" alt="Directory Structure 1" src="directory_structure_1.png"></p>
+<div style="text-align: center"><img width="217" alt="Directory Structure 1" src="directory_structure_1.png"></div>
 
 3. **Generate the analysis files**, using the dashboard, by inputing the analysis information and clicking Generate. The custom Python script and Dockerfile will automatically be generated and can be downloaded to the local folder.
 
@@ -74,7 +62,7 @@ A short description of the data should be provided in the Data Description text 
     docker run -v <absolute path>:/app sparc_analysis_image:latest
     ```
     After running your analysis, your directory should look something like this:
-<p style="text-align:center"><img width="321" alt="Directory Structure 2" src="directory_structure_2.png"></p>
+<div style="text-align: center"><img width="321" alt="Directory Structure 2" src="directory_structure_2.png"></div>
 
 6. **Cleanup: Remove the Docker container and image**, using the CLI, by running the following command:
     ```

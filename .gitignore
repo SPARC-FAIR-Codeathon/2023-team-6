@@ -1,1 +1,11 @@
-*.yaml
+# API Key
+creds.yaml
+
+# Virtual environment files
+.venv/
+venv/
+.env/
+env/
+
+# Python cache files
+__pycache__/
