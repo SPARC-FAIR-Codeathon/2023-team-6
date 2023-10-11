@@ -17,6 +17,9 @@ def load_api_key_from_yaml(relative_file_path):
     with open(api_path, 'r') as file:
         config = yaml.safe_load(file)
         return config.get('openai_api_key')
+    
+def load_api_key_from_request(params):
+    return params['apiKey']
 
 
 

@@ -1,6 +1,6 @@
 # Import flask and datetime module for showing date and time
 from flask import Flask, request, send_file
-from prompt import build_prompt, num_tokens_from_string, load_api_key_from_yaml, write_files
+from prompt import build_prompt, num_tokens_from_string, load_api_key_from_yaml, write_files, load_api_key_from_request
 import openai
 
 # Initializing flask app
@@ -12,7 +12,6 @@ app = Flask(__name__)
 def generate_files():
 
     prompt = build_prompt(request.json)
-    print(prompt)
     
     num_tokens = num_tokens_from_string(prompt, "cl100k_base")
 
@@ -24,7 +23,8 @@ def generate_files():
         {"role": "user", "content": prompt}
     ]
 
-    openai.api_key = load_api_key_from_yaml("/creds.yaml")
+    # openai.api_key = load_api_key_from_yaml("/creds.yaml")
+    openai.api_key = load_api_key_from_request(request.json)
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
