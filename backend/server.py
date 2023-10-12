@@ -1,9 +1,6 @@
 # Import flask and datetime module for showing date and time
-<<<<<<< HEAD
 from flask import Flask, request, send_file
 from prompt import build_prompt, num_tokens_from_string, load_api_key_from_yaml, write_files, load_api_key_from_request
-=======
->>>>>>> 82d4a84556d76cd29c967f47044aa167921370a6
 import openai
 from flask import Flask, request, send_file
 from prompt import (
@@ -21,12 +18,7 @@ app = Flask(__name__)
 @app.route("/generateFiles", methods=["POST"])
 def generate_files():
     prompt = build_prompt(request.json)
-<<<<<<< HEAD
     
-=======
-    print(prompt)
-
->>>>>>> 82d4a84556d76cd29c967f47044aa167921370a6
     num_tokens = num_tokens_from_string(prompt, "cl100k_base")
 
     print("number of tokens = ", num_tokens)
